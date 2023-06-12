@@ -1,0 +1,28 @@
+import datetime
+
+def express_delivery(num_items):
+    first_item_cost = 10.95
+    extra_item_cost = 2.95
+    
+    if num_items == 0:
+        return 0
+    elif num_items == 1:
+        return first_item_cost
+    else:
+        total_delivery_cost = first_item_cost + extra_item_cost*(num_items - 1)
+        return total_delivery_cost
+
+def delivery_decorator(func):
+    def wrapper(num_items):
+        print(f"Time of function call: {datetime.datetime.now()}")
+        print(f"Number of items in order: {num_items}")
+        result = func(num_items)
+        print(f"Total delivery cost: {result}")
+        return result
+    return wrapper
+
+express_delivery = delivery_decorator(express_delivery)
+
+num_items = int(input("Enter number of items in the order: "))
+total_delivery_cost = express_delivery(num_items)
+print(f"Total delivery cost for {num_items} items: {total_delivery_cost}")
