@@ -14,15 +14,15 @@ def express_delivery(num_items):
 
 def delivery_decorator(func):
     def wrapper(num_items):
-        print(f"Time of function call: {datetime.datetime.now()}")
-        print(f"Number of items in order: {num_items}")
+        print(f"Время вызова функции: {datetime.datetime.now()}")
+        print(f"Количество товаров в заказе: {num_items}")
         result = func(num_items)
-        print(f"Total delivery cost: {result}")
+        print(f"Общая стоимость доставки: {result}")
         return result
     return wrapper
 
 express_delivery = delivery_decorator(express_delivery)
 
-num_items = int(input("Enter number of items in the order: "))
+num_items = int(input("Введите количество товаров в заказе: "))
 total_delivery_cost = express_delivery(num_items)
-print(f"Total delivery cost for {num_items} items: {total_delivery_cost}")
+print(f"Общая стоимость доставки {num_items} заказа: {total_delivery_cost}")
